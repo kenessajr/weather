@@ -8,6 +8,7 @@ import '../App.css';
 class WeatherList extends Component {
   // render a single city, a single row
   renderWeather(cityData){
+    console.log(cityData);
     const name = cityData.city.name;
     const temps = _.map(cityData.list.map(weather => weather.main.temp), (temp) => temp - 273 ); //array of data
     const pressures = cityData.list.map(weather => weather.main.pressure);
