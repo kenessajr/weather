@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import Chart from '../components/chart';
 import _ from 'lodash';
 import '../App.css';
+import Map from '../components/google_map';
+
 
 // we want to retreive data from redux
 class WeatherList extends Component {
@@ -14,10 +16,12 @@ class WeatherList extends Component {
     const pressures = cityData.list.map(weather => weather.main.pressure);
     const humidities = cityData.list.map(weather => weather.main.humidity);
     console.log(cityData);
+    const { lon, lat } = cityData.city.coord;
+
 
     return(
       <tr key={name}>
-          <td>{name}</td>
+          <td><Map lon={lon} lat={lat} /></td>
           <td><Chart data={temps} color="orange" units="k" /></td>
           <td><Chart data={pressures} color="green" units="hPa"/></td>
           <td><Chart data={humidities} color="black" units="%" /></td>
